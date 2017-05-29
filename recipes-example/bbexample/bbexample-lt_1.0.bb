@@ -9,12 +9,15 @@ DEPENDS = ""
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=96af5705d6f64a88e035781ef00e98a8"
 
+# This tells bitbake where to find the files we're providing on the local filesystem
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
-SRCREV = "c0cf59833feaa2700544771f903719275588df52"
-SRC_URI = "git://github.com/zeeblex/bbexample.git"
+# Use local tarball
+SRC_URI = "file://bbexample-${PV}.tar.gz"
 
-S = "${WORKDIR}/git"
+# Make sure our source directory (for the build) matches the directory structure in the tarball
+S = "${WORKDIR}/bbexample-${PV}"
 
 inherit autotools
+
 PARALLEL_MAKE = ""
